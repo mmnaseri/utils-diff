@@ -1,0 +1,12 @@
+# IntelliJ IDEA junk
+*.iml
+*.ipr
+*.iws
+.idea
+
+# macOS Junk
+.DS_Store
+._*
+
+# Maven generated target
+target
