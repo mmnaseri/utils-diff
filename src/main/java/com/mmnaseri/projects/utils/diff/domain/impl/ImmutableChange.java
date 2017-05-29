@@ -17,7 +17,19 @@ public class ImmutableChange<V, E extends Item<V>> implements Change<V, E> {
     private final EditOperation editOperation;
     private final int modificationIndex;
 
-    public ImmutableChange(E modifiedVersion, EditOperation editOperation, int modificationIndex) {
+    public static <V, E extends Item<V>> Change<V, E> insert(E what, int where) {
+        return new ImmutableChange<>(EditOperation.INSERT, where, what);
+    }
+
+    public static <V, E extends Item<V>> Change<V, E> modify(E how, int where) {
+        return new ImmutableChange<>(EditOperation.MODIFY, where, how);
+    }
+
+    public static <V, E extends Item<V>> Change<V, E> delete(int which) {
+        return new ImmutableChange<>(EditOperation.DELETE, which, null);
+    }
+
+    private ImmutableChange(EditOperation editOperation, int modificationIndex, E modifiedVersion) {
         this.modifiedVersion = modifiedVersion;
         this.editOperation = editOperation;
         this.modificationIndex = modificationIndex;
@@ -53,6 +65,11 @@ public class ImmutableChange<V, E extends Item<V>> implements Change<V, E> {
                 break;
         }
         return copy;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s at %d (%s)", editOperation, modificationIndex, modifiedVersion);
     }
 
 }
