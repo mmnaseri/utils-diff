@@ -71,6 +71,11 @@ public abstract class AbstractChangeCalculator implements ChangeCalculator {
             result = 31 * result + targetCursor;
             return result;
         }
+
+        @Override
+        public String toString() {
+            return String.format("(%d,%d)", sourceCursor, targetCursor);
+        }
     }
 
 }

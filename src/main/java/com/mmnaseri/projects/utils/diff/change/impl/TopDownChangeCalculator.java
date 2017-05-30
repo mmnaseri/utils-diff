@@ -45,18 +45,18 @@ public class TopDownChangeCalculator extends AbstractDynamicChangeCalculator {
             final Address next = new Address(address.getSourceCursor() + 1, address.getTargetCursor() + 1);
             possibilities.add(calculate(configuration, source, target, cache, next));
         }
-        // Now, let's see what happens if we try to delete an item from the source
-        {
-            final Address next = new Address(address.getSourceCursor() + 1, address.getTargetCursor());
-            List<Change<V, E>> possibility = calculate(configuration, source, target, cache, next);
-            possibility.add(0, ImmutableChange.delete(address.getTargetCursor()));
-            possibilities.add(possibility);
-        }
         // After that, we are going to insert the current item from the target and see what happens
         {
             final Address next = new Address(address.getSourceCursor(), address.getTargetCursor() + 1);
             List<Change<V, E>> possibility = calculate(configuration, source, target, cache, next);
             possibility.add(0, ImmutableChange.insert(target.get(address.getTargetCursor()), address.getTargetCursor()));
+            possibilities.add(possibility);
+        }
+        // Now, let's see what happens if we try to delete an item from the source
+        {
+            final Address next = new Address(address.getSourceCursor() + 1, address.getTargetCursor());
+            List<Change<V, E>> possibility = calculate(configuration, source, target, cache, next);
+            possibility.add(0, ImmutableChange.delete(address.getTargetCursor()));
             possibilities.add(possibility);
         }
         // Now, let's find the least costly possibility
