@@ -4,17 +4,13 @@ import com.mmnaseri.projects.utils.diff.change.ChangeCalculator;
 
 /**
  * @author Mohammad Milad Naseri (mmnaseri@programmer.net)
- * @since 1.0 (5/29/17, 4:33 PM)
+ * @since 1.0 (5/29/17, 5:19 PM)
  */
-public class BruteForceChangeCalculatorTest extends BaseConfigurableChangeCalculatorTest {
+public class TopDownChangeCalculatorTest extends BaseConfigurableChangeCalculatorTest {
 
     @Override
     protected ChangeCalculator getChangeCalculator() {
-        return new BruteForceChangeCalculator();
+        return new TopDownChangeCalculator();
     }
 
-    @Override
-    protected int getBound() {
-        return 1;
-    }
 }

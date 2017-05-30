@@ -21,10 +21,10 @@ public class BruteForceChangeCalculator implements ChangeCalculator {
 
     @Override
     public <V, E extends Item<V>> List<Change<V, E>> calculate(ChangeCalculationConfiguration<V, E> configuration, List<E> source, List<E> target) {
-        return calculate(configuration, source, target, 0, 0, 0);
+        return calculate(configuration, source, target, 0, 0);
     }
 
-    private <V, E extends Item<V>> List<Change<V, E>> calculate(ChangeCalculationConfiguration<V, E> configuration, List<E> source, List<E> target, int sourceCursor, int targetCursor, int listCursor) {
+    private <V, E extends Item<V>> List<Change<V, E>> calculate(ChangeCalculationConfiguration<V, E> configuration, List<E> source, List<E> target, int sourceCursor, int targetCursor) {
         if (sourceCursor >= source.size() && targetCursor >= target.size()) {
             // If the cursors have both fallen over, there aren't any more changes to be done
             return new LinkedList<>();
@@ -33,14 +33,14 @@ public class BruteForceChangeCalculator implements ChangeCalculator {
             // If the source has been evaluated but the target still remains, we can only insert items from the target
             for (int i = targetCursor; i < target.size(); i++) {
                 E item = target.get(i);
-                changes.add(ImmutableChange.insert(item, listCursor ++));
+                changes.add(ImmutableChange.insert(item, targetCursor ++));
             }
             return changes;
         } else if (sourceCursor < source.size() && targetCursor >= target.size()) {
             final List<Change<V, E>> changes = new LinkedList<>();
             // If the target has been evaluated but the source still remains, we can only delete from the source
             for (int i = sourceCursor; i < source.size(); i++) {
-                changes.add(ImmutableChange.delete(listCursor));
+                changes.add(ImmutableChange.delete(targetCursor));
             }
             return changes;
         }
@@ -50,24 +50,24 @@ public class BruteForceChangeCalculator implements ChangeCalculator {
         final List<List<Change<V, E>>> possibilities = new ArrayList<>();
         if (Comparison.EDITED.equals(comparison)) {
             // It might be possible to edit one item into the other and take it from there
-            List<Change<V, E>> possibility = calculate(configuration, source, target, sourceCursor + 1, targetCursor + 1, listCursor + 1);
-            possibility.add(0, ImmutableChange.modify(target.get(targetCursor), listCursor));
+            List<Change<V, E>> possibility = calculate(configuration, source, target, sourceCursor + 1, targetCursor + 1);
+            possibility.add(0, ImmutableChange.modify(target.get(targetCursor), targetCursor));
             possibilities.add(possibility);
         }
         if (Comparison.EQUAL.equals(comparison)) {
             // If they are equal at this point, maybe we can keep them like that
-            possibilities.add(calculate(configuration, source, target, sourceCursor + 1, targetCursor + 1, listCursor + 1));
+            possibilities.add(calculate(configuration, source, target, sourceCursor + 1, targetCursor + 1));
         }
         // Now, let's see what happens if we try to delete an item from the source
         {
-            List<Change<V, E>> possibility = calculate(configuration, source, target, sourceCursor + 1, targetCursor, listCursor);
-            possibility.add(0, ImmutableChange.delete(listCursor));
+            List<Change<V, E>> possibility = calculate(configuration, source, target, sourceCursor + 1, targetCursor);
+            possibility.add(0, ImmutableChange.delete(targetCursor));
             possibilities.add(possibility);
         }
         // After that, we are going to insert the current item from the target and see what happens
         {
-            List<Change<V, E>> possibility = calculate(configuration, source, target, sourceCursor, targetCursor + 1, listCursor + 1);
-            possibility.add(0, ImmutableChange.insert(target.get(targetCursor), listCursor));
+            List<Change<V, E>> possibility = calculate(configuration, source, target, sourceCursor, targetCursor + 1);
+            possibility.add(0, ImmutableChange.insert(target.get(targetCursor), targetCursor));
             possibilities.add(possibility);
         }
         // Now, let's find the least costly possibility
