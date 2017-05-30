@@ -50,7 +50,7 @@ public abstract class BaseChangeCalculatorTest {
         validateChanges(source, target, changes);
     }
 
-    @Test(invocationCount = 20)
+    @Test(invocationCount = 50)
     public void testGeneratedSample() throws Exception {
         char[] chars = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
                 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
