@@ -20,4 +20,21 @@ public class ImmutableItem<V> implements Item<V> {
         return sequence;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(getAsSequence());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ImmutableItem<?> that = (ImmutableItem<?>) o;
+        return sequence.equals(that.sequence);
+    }
+
+    @Override
+    public int hashCode() {
+        return sequence.hashCode();
+    }
 }

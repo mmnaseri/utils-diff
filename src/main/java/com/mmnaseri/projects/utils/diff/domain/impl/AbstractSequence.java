@@ -13,4 +13,22 @@ public abstract class AbstractSequence<I> implements Sequence<I> {
         return new DelegatingSequence<>(this, from, to);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(getClass().isInstance(obj))) {
+            return false;
+        }
+        //noinspection unchecked
+        final Sequence<I> that = (Sequence<I>) obj;
+        if (length() != that.length()) {
+            return false;
+        }
+        for (int i = 0; i < length(); i++) {
+            if (at(i) != that.at(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

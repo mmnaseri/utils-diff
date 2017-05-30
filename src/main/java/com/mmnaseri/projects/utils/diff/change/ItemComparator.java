@@ -9,6 +9,6 @@ import com.mmnaseri.projects.utils.diff.domain.Item;
  */
 public interface ItemComparator<V, E extends Item<V>> {
 
-    Comparison compare();
+    Comparison compare(E first, E second);
 
 }

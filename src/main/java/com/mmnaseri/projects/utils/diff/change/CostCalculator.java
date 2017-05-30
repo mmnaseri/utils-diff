@@ -1,6 +1,7 @@
 package com.mmnaseri.projects.utils.diff.change;
 
-import com.mmnaseri.projects.utils.diff.domain.EditOperation;
+import com.mmnaseri.projects.utils.diff.domain.Change;
+import com.mmnaseri.projects.utils.diff.domain.Item;
 
 /**
  * @author Mohammad Milad Naseri (mmnaseri@programmer.net)
@@ -9,6 +10,6 @@ import com.mmnaseri.projects.utils.diff.domain.EditOperation;
 @FunctionalInterface
 public interface CostCalculator {
 
-    int getCost(EditOperation operation);
+    <V, E extends Item<V>> int getCost(Change<V, E> change);
 
 }

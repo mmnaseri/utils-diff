@@ -22,4 +22,12 @@ public class CharacterSequence extends AbstractSequence<Character> {
         return value.charAt(index);
     }
 
+    public CharSequence getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
 }

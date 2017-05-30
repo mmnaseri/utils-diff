@@ -12,6 +12,6 @@ import java.util.List;
 @FunctionalInterface
 public interface ChangeCalculator {
 
-    <V, E extends Item<V>> List<Change<V, E>> calculate(List<E> source, List<E> target);
+    <V, E extends Item<V>> List<Change<V, E>> calculate(ChangeCalculationConfiguration<V, E> configuration, List<E> source, List<E> target);
 
 }

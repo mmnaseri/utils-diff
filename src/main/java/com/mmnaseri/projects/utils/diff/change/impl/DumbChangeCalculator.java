@@ -1,5 +1,6 @@
 package com.mmnaseri.projects.utils.diff.change.impl;
 
+import com.mmnaseri.projects.utils.diff.change.ChangeCalculationConfiguration;
 import com.mmnaseri.projects.utils.diff.change.ChangeCalculator;
 import com.mmnaseri.projects.utils.diff.domain.Change;
 import com.mmnaseri.projects.utils.diff.domain.Item;
@@ -15,7 +16,7 @@ import java.util.List;
 public class DumbChangeCalculator implements ChangeCalculator {
 
     @Override
-    public <V, E extends Item<V>> List<Change<V, E>> calculate(List<E> source, List<E> target) {
+    public <V, E extends Item<V>> List<Change<V, E>> calculate(ChangeCalculationConfiguration<V, E> configuration, List<E> source, List<E> target) {
         final List<Change<V, E>> changes = new LinkedList<>();
         for (int i = 0; i < source.size(); i++) {
             changes.add(ImmutableChange.delete(0));
