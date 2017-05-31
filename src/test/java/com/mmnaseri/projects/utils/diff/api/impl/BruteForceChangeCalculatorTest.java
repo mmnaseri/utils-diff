@@ -15,6 +15,6 @@ public class BruteForceChangeCalculatorTest extends BaseConfigurableChangeCalcul
 
     @Override
     protected int getBound() {
-        return 1;
+        return 13;
     }
 }

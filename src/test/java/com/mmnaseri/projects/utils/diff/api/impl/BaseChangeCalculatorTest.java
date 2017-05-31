@@ -55,7 +55,7 @@ public abstract class BaseChangeCalculatorTest {
         char[] chars = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
                 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
         final Random random = new Random();
-        int wordCount = 10 + random.nextInt(getBound());
+        int wordCount = getBound() / 2 + random.nextInt(getBound() / 2);
         final List<String> words = new LinkedList<>();
         for (int i = 0; i < wordCount; i++) {
             words.add(generateWord(chars, random));
@@ -72,7 +72,7 @@ public abstract class BaseChangeCalculatorTest {
     }
 
     protected int getBound() {
-        return 40;
+        return 100;
     }
 
     private void applyInsertions(char[] chars, Random random, List<String> changed) {
