@@ -1,6 +1,6 @@
-package com.mmnaseri.projects.utils.diff.change.impl;
+package com.mmnaseri.projects.utils.diff.api.impl;
 
-import com.mmnaseri.projects.utils.diff.change.ChangeCalculator;
+import com.mmnaseri.projects.utils.diff.api.ChangeCalculator;
 
 /**
  * @author Mohammad Milad Naseri (mmnaseri@programmer.net)

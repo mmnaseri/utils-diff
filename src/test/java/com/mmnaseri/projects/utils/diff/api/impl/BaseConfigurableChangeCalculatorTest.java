@@ -1,6 +1,6 @@
-package com.mmnaseri.projects.utils.diff.change.impl;
+package com.mmnaseri.projects.utils.diff.api.impl;
 
-import com.mmnaseri.projects.utils.diff.change.ChangeCalculationConfiguration;
+import com.mmnaseri.projects.utils.diff.api.ChangeCalculationConfiguration;
 import com.mmnaseri.projects.utils.diff.domain.Item;
 
 /**

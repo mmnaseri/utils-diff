@@ -1,6 +1,6 @@
-package com.mmnaseri.projects.utils.diff.change.impl;
+package com.mmnaseri.projects.utils.diff.api.impl;
 
-import com.mmnaseri.projects.utils.diff.change.CostCalculator;
+import com.mmnaseri.projects.utils.diff.api.CostCalculator;
 import com.mmnaseri.projects.utils.diff.domain.Change;
 import com.mmnaseri.projects.utils.diff.domain.EditOperation;
 import com.mmnaseri.projects.utils.diff.domain.Item;

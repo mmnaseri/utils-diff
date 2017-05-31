@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.function.Function;
 
 /**
- * This interface represents a change that can be applied to a given list to make one incremental modification to its
+ * This interface represents a api that can be applied to a given list to make one incremental modification to its
  * current state.
  *
  * @author Mohammad Milad Naseri (mmnaseri@programmer.net)

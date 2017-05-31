@@ -1,7 +1,7 @@
-package com.mmnaseri.projects.utils.diff.change.impl;
+package com.mmnaseri.projects.utils.diff.api.impl;
 
-import com.mmnaseri.projects.utils.diff.change.ChangeCalculationConfiguration;
-import com.mmnaseri.projects.utils.diff.change.ChangeCalculator;
+import com.mmnaseri.projects.utils.diff.api.ChangeCalculationConfiguration;
+import com.mmnaseri.projects.utils.diff.api.ChangeCalculator;
 import com.mmnaseri.projects.utils.diff.domain.Change;
 import com.mmnaseri.projects.utils.diff.domain.Item;
 import com.mmnaseri.projects.utils.diff.domain.impl.ImmutableChange;

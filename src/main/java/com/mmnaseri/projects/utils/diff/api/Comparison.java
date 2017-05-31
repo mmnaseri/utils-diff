@@ -1,4 +1,4 @@
-package com.mmnaseri.projects.utils.diff.change;
+package com.mmnaseri.projects.utils.diff.api;
 
 /**
  * @author Mohammad Milad Naseri (mmnaseri@programmer.net)

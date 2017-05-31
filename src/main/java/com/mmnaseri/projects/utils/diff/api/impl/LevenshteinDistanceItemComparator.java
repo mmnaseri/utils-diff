@@ -1,7 +1,7 @@
-package com.mmnaseri.projects.utils.diff.change.impl;
+package com.mmnaseri.projects.utils.diff.api.impl;
 
-import com.mmnaseri.projects.utils.diff.change.ItemComparator;
-import com.mmnaseri.projects.utils.diff.change.Comparison;
+import com.mmnaseri.projects.utils.diff.api.ItemComparator;
+import com.mmnaseri.projects.utils.diff.api.Comparison;
 import com.mmnaseri.projects.utils.diff.domain.Item;
 import com.mmnaseri.projects.utils.diff.domain.impl.CharacterSequence;
 import org.apache.commons.lang3.StringUtils;

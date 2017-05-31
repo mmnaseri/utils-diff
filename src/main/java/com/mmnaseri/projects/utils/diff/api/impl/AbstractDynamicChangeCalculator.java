@@ -1,4 +1,4 @@
-package com.mmnaseri.projects.utils.diff.change.impl;
+package com.mmnaseri.projects.utils.diff.api.impl;
 
 import com.mmnaseri.projects.utils.diff.domain.Change;
 import com.mmnaseri.projects.utils.diff.domain.Item;
