@@ -6,7 +6,6 @@ import com.mmnaseri.projects.utils.diff.domain.Change;
 import com.mmnaseri.projects.utils.diff.domain.Item;
 import com.mmnaseri.projects.utils.diff.domain.impl.ImmutableChange;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +33,6 @@ public class TopDownChangeCalculator extends AbstractDynamicChangeCalculator {
         // At this point, both lists have items to go through
         // First, let's see how the items compare against each other
         final Comparison comparison = configuration.getItemComparator().compare(source.get(address.getSourceCursor()), target.get(address.getTargetCursor()));
-        final List<List<Change<V, E>>> possibilities = new ArrayList<>();
         ChangeList<V, E> result = null;
         if (Comparison.EDITED.equals(comparison)) {
             // It might be possible to edit one item into the other and take it from there

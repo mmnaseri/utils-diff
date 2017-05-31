@@ -2,8 +2,8 @@ package com.mmnaseri.projects.utils.diff.api.impl;
 
 import com.mmnaseri.projects.utils.diff.api.ChangeCalculationConfiguration;
 import com.mmnaseri.projects.utils.diff.api.CostCalculator;
-import com.mmnaseri.projects.utils.diff.domain.Item;
 import com.mmnaseri.projects.utils.diff.api.ItemComparator;
+import com.mmnaseri.projects.utils.diff.domain.Item;
 
 import java.util.Objects;
 
