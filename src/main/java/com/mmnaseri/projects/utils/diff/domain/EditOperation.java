@@ -6,8 +6,17 @@ package com.mmnaseri.projects.utils.diff.domain;
  */
 public enum EditOperation {
 
+    /**
+     * An insertion must take place
+     */
     INSERT,
+    /**
+     * The target item must be deleted
+     */
     DELETE,
+    /**
+     * The target item must be modified locally to be morphed into the desired value
+     */
     MODIFY
 
 }

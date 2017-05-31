@@ -2,7 +2,7 @@ package com.mmnaseri.projects.utils.diff.change.impl;
 
 import com.mmnaseri.projects.utils.diff.change.ChangeCalculationConfiguration;
 import com.mmnaseri.projects.utils.diff.domain.Change;
-import com.mmnaseri.projects.utils.diff.domain.Comparison;
+import com.mmnaseri.projects.utils.diff.change.Comparison;
 import com.mmnaseri.projects.utils.diff.domain.Item;
 import com.mmnaseri.projects.utils.diff.domain.impl.ImmutableChange;
 
@@ -29,9 +29,6 @@ public class BottomUpChangeCalculator extends AbstractDynamicChangeCalculator {
     }
 
     private <V, E extends Item<V>> void calculate(ChangeCalculationConfiguration<V, E> configuration, List<E> source, List<E> target, Map<Address, List<Change<V, E>>> cache, Address address) {
-        if (cache.containsKey(address)) {
-            return;
-        }
         final List<Change<V, E>> baseCaseResult = handleBaseCases(source, target, cache, address);
         if (baseCaseResult != null) {
             return;
