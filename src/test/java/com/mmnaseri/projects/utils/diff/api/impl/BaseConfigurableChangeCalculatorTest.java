@@ -2,6 +2,7 @@ package com.mmnaseri.projects.utils.diff.api.impl;
 
 import com.mmnaseri.projects.utils.diff.api.ChangeCalculationConfiguration;
 import com.mmnaseri.projects.utils.diff.domain.Item;
+import com.mmnaseri.projects.utils.diff.util.impl.LevenshteinSequenceDistanceCalculator;
 
 /**
  * @author Mohammad Milad Naseri (mmnaseri@programmer.net)
@@ -12,7 +13,7 @@ public abstract class BaseConfigurableChangeCalculatorTest extends BaseChangeCal
     @Override
     protected <V, E extends Item<V>> ChangeCalculationConfiguration<V, E> getConfiguration() {
         return ChangeCalculationConfigurationBuilder
-                .<V, E>usingItemComparator(new LevenshteinDistanceItemComparator<>(30))
+                .<V, E>usingItemComparator(new DistanceItemComparator<>(30, new LevenshteinSequenceDistanceCalculator()))
                 .andCostCalculator(new OperationBasedCostCalculator(10, 8, 5))
                 .build();
     }

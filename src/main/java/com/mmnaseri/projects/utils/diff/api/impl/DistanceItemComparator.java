@@ -4,18 +4,25 @@ import com.mmnaseri.projects.utils.diff.api.Comparison;
 import com.mmnaseri.projects.utils.diff.api.ItemComparator;
 import com.mmnaseri.projects.utils.diff.domain.Item;
 import com.mmnaseri.projects.utils.diff.domain.impl.CharacterSequence;
-import org.apache.commons.lang3.StringUtils;
+import com.mmnaseri.projects.utils.diff.util.SequenceDistanceCalculator;
+import com.mmnaseri.projects.utils.diff.util.impl.LevenshteinSequenceDistanceCalculator;
 
 /**
  * @author Mohammad Milad Naseri (mmnaseri@programmer.net)
  * @since 1.0 (5/29/17, 5:08 PM)
  */
-public class LevenshteinDistanceItemComparator<V, E extends Item<V>> implements ItemComparator<V, E> {
+public class DistanceItemComparator<V, E extends Item<V>> implements ItemComparator<V, E> {
 
     private final int threshold;
+    private final SequenceDistanceCalculator distanceCalculator;
 
-    public LevenshteinDistanceItemComparator(int threshold) {
+    public DistanceItemComparator(int threshold) {
+        this(threshold, new LevenshteinSequenceDistanceCalculator());
+    }
+
+    public DistanceItemComparator(int threshold, SequenceDistanceCalculator distanceCalculator) {
         this.threshold = threshold;
+        this.distanceCalculator = distanceCalculator;
     }
 
     @Override
@@ -25,7 +32,7 @@ public class LevenshteinDistanceItemComparator<V, E extends Item<V>> implements 
         if (firstSequence.getValue().equals(secondSequence.getValue())) {
             return Comparison.EQUAL;
         }
-        final int distance = StringUtils.getLevenshteinDistance(firstSequence.getValue(), secondSequence.getValue());
+        final int distance = distanceCalculator.getDistance(firstSequence, secondSequence);
         if (distance * 100.D / firstSequence.length() < threshold) {
             return Comparison.EDITED;
         }
