@@ -9,6 +9,9 @@ import com.mmnaseri.projects.utils.diff.domain.Item;
  */
 public interface BuildConfiguration<V, E extends Item<V>> extends ChangeCalculation<V, E> {
 
+    /**
+     * @return the configuration put together so far for later use.
+     */
     ChangeCalculationConfiguration<V, E> configure();
 
 }

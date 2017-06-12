@@ -9,6 +9,10 @@ import com.mmnaseri.projects.utils.diff.domain.Item;
  */
 public interface ItemComparatorConfig<V, E extends Item<V>> {
 
+    /**
+     * Specifies which item comparator should be used
+     * @param itemComparator the item comparator
+     */
     CostCalculatorConfig<V, E> usingItemComparator(ItemComparator<V, E> itemComparator);
 
 }

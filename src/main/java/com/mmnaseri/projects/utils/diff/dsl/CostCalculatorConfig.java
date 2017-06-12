@@ -9,6 +9,10 @@ import com.mmnaseri.projects.utils.diff.domain.Item;
  */
 public interface CostCalculatorConfig<V, E extends Item<V>> {
 
+    /**
+     * Used to specify what cost calculator is to be used
+     * @param costCalculator the cost calculator
+     */
     BuildConfiguration<V, E> andCostCalculator(CostCalculator costCalculator);
 
 }
