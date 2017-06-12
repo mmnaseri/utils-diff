@@ -16,6 +16,6 @@ public interface ItemComparator<V, E extends Item<V>> {
      * @param second the target of the comparison
      * @return the comparison decision
      */
-    Comparison compare(E first, E second);
+    ItemComparison compare(E first, E second);
 
 }

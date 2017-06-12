@@ -4,7 +4,7 @@ package com.mmnaseri.projects.utils.diff.api;
  * @author Mohammad Milad Naseri (mmnaseri@programmer.net)
  * @since 1.0 (5/29/17, 7:30 AM)
  */
-public enum Comparison {
+public enum ItemComparison {
 
     /**
      * The two items are identical

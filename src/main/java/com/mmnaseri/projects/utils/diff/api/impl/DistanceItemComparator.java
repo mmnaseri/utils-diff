@@ -1,6 +1,6 @@
 package com.mmnaseri.projects.utils.diff.api.impl;
 
-import com.mmnaseri.projects.utils.diff.api.Comparison;
+import com.mmnaseri.projects.utils.diff.api.ItemComparison;
 import com.mmnaseri.projects.utils.diff.api.ItemComparator;
 import com.mmnaseri.projects.utils.diff.domain.Item;
 import com.mmnaseri.projects.utils.diff.domain.impl.CharacterSequence;
@@ -26,17 +26,17 @@ public class DistanceItemComparator<V, E extends Item<V>> implements ItemCompara
     }
 
     @Override
-    public Comparison compare(E first, E second) {
+    public ItemComparison compare(E first, E second) {
         final CharacterSequence firstSequence = (CharacterSequence) first.getAsSequence();
         final CharacterSequence secondSequence = (CharacterSequence) second.getAsSequence();
         if (firstSequence.getValue().equals(secondSequence.getValue())) {
-            return Comparison.EQUAL;
+            return ItemComparison.EQUAL;
         }
         final int distance = distanceCalculator.getDistance(firstSequence, secondSequence);
         if (distance * 100.D / firstSequence.length() < threshold) {
-            return Comparison.EDITED;
+            return ItemComparison.EDITED;
         }
-        return Comparison.REPLACED;
+        return ItemComparison.REPLACED;
     }
 
 }
