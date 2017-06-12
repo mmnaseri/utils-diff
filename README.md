@@ -26,3 +26,5 @@ might lead to changes being equal to the two following actions:
 2. Insert `"myself!"` at index `1`
 
 which when applied sequentially to the source list will yield the target list.
+
+For more, refer to the usage doc.
