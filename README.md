@@ -7,17 +7,10 @@ incremental changes.
 For instance:
 
 ```java
-ChangeCalculator calculator = new TopDownChangeCalculator();
 final List<Change<Character, Item<Character>>> changes;
-final List<Item<Character>> source = Arrays.asList(
-        Item.of("hello"),
-        Item.of("world!")
-);
-final List<Item<Character>> source = Arrays.asList(
-        Item.of("hello"),
-        Item.of("myself!")
-);
-changes = changeCalculator.calculate(getConfiguration(), source, target);
+final List<Item<Character>> source = Item.asList("hello", "world!");
+final List<Item<Character>> source = Item.asList("hello", "myself!");
+changes = usingConfiguration(configuration).compare(source, target);
 ```
 
 might lead to changes being equal to the two following actions:
@@ -25,6 +18,14 @@ might lead to changes being equal to the two following actions:
 1. Delete item at index `1`
 2. Insert `"myself!"` at index `1`
 
-which when applied sequentially to the source list will yield the target list.
+which when applied sequentially to the source list will yield the target list:
 
-For more, refer to the usage doc.
+```java
+list = source;
+for (Change<Character, Item<Character>> change : changes) {
+    list = change.apply(list);
+}
+```
+
+For more on how to use the framework and what things it can do, refer to
+[the usage documentation](USAGE.md).
